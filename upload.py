@@ -15,10 +15,10 @@ from oci.object_storage import ObjectStorageClient
 # the key is the key (PEM) you have uploaded to your profile 
 #
 config = {
-    "user": "ocid1.user.oc1..aaaaaaaa74jcujsv5usad4sc747bfzvomn3tzcjxixxauy476u2eo5jg4nfa",
-    "key_file": "/Users/lsaetta/Progetti/rgs/oci_api_key.pem",
-    "fingerprint": "75:34:ba:e8:90:a5:ef:87:b5:ae:79:2a:85:a7:b5:38",
-    "tenancy": "ocid1.tenancy.oc1..aaaaaaaa36syckdxnimtf5a4jvfsoe7ddyycboniocrumqga2joxlvzc6wsq",
+    "user": "ocid1.user.oc1..XXXXX",
+    "key_file": "/Users/lsaetta/Progetti/xxxx/oci_api_key.pem",
+    "fingerprint": "YYYYY",
+    "tenancy": "ocid1.tenancy.oc1..ZZZZZZ",
     "region": "eu-frankfurt-1"
 }
 
