@@ -25,7 +25,7 @@ config = {
 }
 
 # controlla command line params
-def controlla_params():
+def check_params():
     # verifica parametri input
     N_PARAMS = 3 # numero atteso parametri
     n_params = len(sys.argv)
@@ -39,38 +39,40 @@ def controlla_params():
         print("Running with: ")
         print("Bucket name: {}".format(sys.argv[1]))
         print("File path: {}".format(sys.argv[2]))
-        print("File name: {}".format(sys.argv[3]))
+        print("File names: {}".format(sys.argv[3]))
         print("")
 
 #
 # Main
 #
-print("")
-
-controlla_params()
-
-validate_config(config)
-
-print("Validazione configurazione OK")
-
-bucket_name = sys.argv[1]
-FILE_PATH = sys.argv[2]
-
-# parse file_names
-FILE_NAMES = sys.argv[3].split(",") 
-
-object_storage_client = ObjectStorageClient(config)
-
-# get the namespace
-namespace = object_storage_client.get_namespace().data
-
-print("")
-
-for FILE_NAME in FILE_NAMES:
-    print('Uploading file {} ...'.format(FILE_NAME))
-
-    object_storage_client.put_object(namespace, bucket_name, FILE_NAME, io.open(os.path.join(Path(FILE_PATH), FILE_NAME),'rb'))
-
-    print("Upload completato !")
+if __name__ == "__main__":
     print("")
+
+    check_params()
+
+    validate_config(config)
+
+    print("Validate configuration OK")
+
+    bucket_name = sys.argv[1]
+    FILE_PATH = sys.argv[2]
+    FILE_NAMES = sys.argv[3]
+
+    # parse file_names
+    FILE_NAMES = sys.argv[3].split(",") 
+
+    object_storage_client = ObjectStorageClient(config)
+
+    # get the namespace
+    namespace = object_storage_client.get_namespace().data
+
+    print("")
+
+    for FILE_NAME in FILE_NAMES:
+        print('Uploading file {} ...'.format(FILE_NAME))
+
+        object_storage_client.put_object(namespace, bucket_name, FILE_NAME, io.open(os.path.join(Path(FILE_PATH), FILE_NAME),'rb'))
+
+        print("Upload completed !")
+        print("")
 
