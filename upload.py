@@ -55,7 +55,6 @@ print("Validazione configurazione OK")
 
 bucket_name = sys.argv[1]
 FILE_PATH = sys.argv[2]
-FILE_NAMES = sys.argv[3]
 
 # parse file_names
 FILE_NAMES = sys.argv[3].split(",") 
